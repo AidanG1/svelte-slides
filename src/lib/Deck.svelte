@@ -5,9 +5,11 @@
 	import { setContext, getContext } from "svelte";
 	import { writable } from "svelte/store";
 	import { tap } from "svelte-gestures";
+	import { page } from "$app/stores";
+	import { goto } from "$app/navigation";
 
 	let slidesStore = writable([]);
-	let currentIndexStore = writable(0);
+	let currentIndexStore = writable($page.url.searchParams.get('i') || 0);
 	let stepStore = writable(0);
 	let vizzuStepStore = writable(0);
 	let maxStepsStore = writable(0);
@@ -25,6 +27,10 @@
 	let vizzuStep = getContext("vizzuStep");
 
 	let yScroll;
+
+	function change_param(index) {
+		goto(`/?i=${index}`);
+	}
 
 	const previous = (index) => Math.max(index - 1, 0);
 	const next = (index, numElem) => Math.min(index + 1, numElem - 1);
@@ -56,6 +62,7 @@
 				$step = next($step, $maxSteps + 1);
 				break;
 		}
+		change_param($currentIndex);
 	}
 
 	let ScreenWidth;
@@ -88,6 +95,7 @@
 <svelte:window on:keydown={handleKeydown} bind:scrollY={yScroll} />
 
 <div
+	id="deck-id"
 	class="min-w-full-screen min-h-screen"
 	use:tap={{ timeframe: 500 }}
 	on:tap={handleTap}
@@ -95,3 +103,9 @@
 >
 	<slot />
 </div>
+
+<style>
+	#deck-id {
+		background-image: url("/circle-scatter-haikei.svg");
+	}
+</style>
