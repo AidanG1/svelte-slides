@@ -9,10 +9,8 @@
 	let titles = {};
 	let slides = [];
 	let title_slides = [];
-	let slide_count = 0;
 
-	for (let i = 0; i < images.length; i++) {
-		const image = images[i];
+	for (let image of images) {
 		let index = slides.length;
 		if (titles[image.title]) {
 			index = titles[image.title];
@@ -22,10 +20,7 @@
 		}
 		let slide_options = slides[index];
 		if (image.title_image) {
-			title_slides.push({
-				index: i,
-				sc: slide_count,
-			});
+			title_slides.push(image);
 		}
 		if (image.orientation == "v") {
 			const is_vertical = slide_options
@@ -41,7 +36,6 @@
 						images: [image],
 						title: false,
 					});
-					slide_count++;
 				}
 			} else {
 				slide_options.push({
@@ -49,7 +43,6 @@
 					images: [image],
 					title: false,
 				});
-				slide_count++;
 			}
 		} else {
 			const is_horizontal = slide_options
@@ -65,7 +58,6 @@
 						images: [image],
 						title: false,
 					});
-					slide_count++;
 				}
 			} else {
 				slide_options.push({
@@ -73,18 +65,25 @@
 					images: [image],
 					title: false,
 				});
-				slide_count++;
 			}
 		}
 	}
 
-	for (let title_slide of title_slides.sort((a, b) => b - a)) {
-		console.log(title_slide)
-		// insert title slide in front of its first index
-		slides.splice(title_slide.sc, 0, [
-			{ title: images[title_slide.index].title, images: [images[title_slide.index]] },
-		]);
+	let j = 0;
+
+	for (let title_slide of title_slides.reverse()) {
+		console.log(title_slide);
+
+		for (let i = j; i < slides.length; i++) {
+			j++;
+			if (slides[i][0].images[0].title == title_slide.title) {
+				slides.splice(i, 0, [{ title: true, images: [title_slide] }]);
+				break;
+			}
+		}
 	}
+
+	slides = slides;
 </script>
 
 <Deck>
