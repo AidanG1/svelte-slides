@@ -1,8 +1,6 @@
 <script>
 	import { images } from "$lib/images";
-	import Slide from "$lib/Slide.svelte";
 	import Deck from "$lib/Deck.svelte";
-	import Vizzu from "$lib/Vizzu.svelte";
 	import TitleSlide from "../components/TitleSlide.svelte";
 	import IntroSlide from "../components/IntroSlide.svelte";
 	import PhotoGrid from "../components/PhotoGrid.svelte";
@@ -25,9 +23,11 @@
 			title_slides.push(index);
 		}
 		if (image.orientation == "v") {
-			const is_vertical = slide_options.lastIndexOf((s) => s.vertical);
+			const is_vertical = slide_options
+				.map((s) => s.vertical)
+				.lastIndexOf(true);
 			if (is_vertical !== -1) {
-				iv = slide_options[is_vertical];
+				const iv = slide_options[is_vertical];
 				if (iv.images.length < 3) {
 					iv.images.push(image);
 				} else {
@@ -45,9 +45,12 @@
 				});
 			}
 		} else {
-			const is_horizontal = slide_options.lastIndexOf((s) => !s.vertical);
+			const is_horizontal = slide_options
+				.map((s) => s.vertical)
+				.lastIndexOf(false);
+			console.log(slide_options);
 			if (is_horizontal !== -1) {
-				ih = slide_options[is_horizontal];
+				const ih = slide_options[is_horizontal];
 				if (ih.images.length < 4) {
 					ih.images.push(image);
 				} else {
@@ -73,8 +76,6 @@
 			{ title: images[title_slide].title, images: [images[title_slide]] },
 		]);
 	}
-
-	console.log(slides);
 </script>
 
 <Deck>

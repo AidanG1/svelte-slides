@@ -90,12 +90,6 @@ export const images = [
         title_image: false,
     },
     {
-        url: 'https://lh3.googleusercontent.com/pw/AL9nZEV3vA17SZRvhAd7dooJdUJudrmQkbIUmp0hyr5-SXYL_65lAoyau3Rad6xCY7Vp75wxobiH3M2aTnQOIdhRpklJA3DhHm9r93ytKtkfTxwctV19eB5XmCGICaNFBcT_z9pstBYbL5S9ilFpamR4xz5DgA=w854-h1280-no',
-        orientation: 'v',
-        title: 'Death Valley',
-        title_image: false,
-    },
-    {
         url: 'https://lh3.googleusercontent.com/pw/AL9nZEW6JkxA353yz99HX6e8NcLVGM3EM6X51UXXPTez8lTRGjjdQSmxoNu_2C2-PrCHVBmrMRkQMPoeZscSKvkUPIkxCv6guMyjoqR0GEUSda5QTecf9K8Un7twtb2JICr8V-LrldWRGXkev9zmeu0NzWoseQ=w854-h1280-no',
         orientation: 'v',
         title: 'Death Valley',
