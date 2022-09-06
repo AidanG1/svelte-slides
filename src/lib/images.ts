@@ -1046,7 +1046,7 @@ export const images = [
         orientation: 'h', title: 'O Week', title_image: false,
     }, {
         url: 'https://lh3.googleusercontent.com/pw/AL9nZEUAbcJ34cPXVVXegzuEmOHLsYHXKu1cKzj-21DGYE-gsPiPvl3tgSsvao1NCEek_ZV5PgdZoeJHLSYCHbtjZenHb34vhRHmmpqAmPfknZJXD1-yD8KZxcVFRyW-HV5WTAjS2JuJ13dMvAAqo7PeJ-G6uw=w1920-h800-no',
-        orientation: 'h', title: 'O Week', title_image: false,
+        orientation: 'h', title: 'O Week', title_image: true,
     }, {
         url: 'https://lh3.googleusercontent.com/pw/AL9nZEXR_6cSUUViRNQMfKOnALGsN-iUWK6iUroFZzNh9-SjFsEFsQ1MqZWNEbCTVymMZlPF2gY_PglrB2q0f4mXBtJb1ukrORIEy3EZ0iF2Xxqr9p_VGVzUT0_v_sbAxNVYTOEJby60-rBIpMX6IDNoMr6k6g=w854-h1280-no',
         orientation: 'v', title: 'O Week', title_image: false,

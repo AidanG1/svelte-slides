@@ -69,16 +69,20 @@
 		}
 	}
 
-	let j = 0;
+	const seenTitles = new Set();
 
-	for (let title_slide of title_slides.reverse()) {
-		console.log(title_slide);
-
-		for (let i = j; i < slides.length; i++) {
-			j++;
-			if (slides[i][0].images[0].title == title_slide.title) {
-				slides.splice(i, 0, [{ title: true, images: [title_slide] }]);
-				break;
+	for (let i = 0; i < slides.length; i++) {
+		const slide = slides[i];
+		const title_slide = title_slides.find(
+			(s) => s.title === slide[0].images[0].title
+		);
+		if (title_slide) {
+			if (!seenTitles.has(title_slide.title)) {
+				slides[i] = [
+					{ title: title_slide?.title, images: [title_slide] },
+					...slide,
+				];
+				seenTitles.add(title_slide.title);
 			}
 		}
 	}
